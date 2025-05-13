@@ -28,9 +28,7 @@ def register(request):
 
         if form.is_valid():
             form.save()
-            return render(request, "users/register.html", {
-                "form": form
-            })
+            return redirect('login')
         else:
             return render(request, "users/register.html", {
                 "form": form

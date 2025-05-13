@@ -11,7 +11,7 @@ class Users(models.Model):
     username = models.CharField(max_length=50, unique=True)
     email = models.EmailField(unique=True)
     address = models.CharField(max_length=150)
-    phone = models.CharField(max_length=15)
+    phone = models.CharField(max_length=17)
     role = models.CharField(max_length=10, choices=ROLE, default='customer')
 
     USERNAME_FIELD = 'username'
