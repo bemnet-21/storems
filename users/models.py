@@ -1,3 +1,4 @@
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 ROLE = (
@@ -6,16 +7,13 @@ ROLE = (
     ('admin', 'Admin'),
 )
 
-class Users(models.Model):
-    name = models.CharField(max_length=50)
-    username = models.CharField(max_length=50, unique=True)
-    email = models.EmailField(unique=True)
+class Users(AbstractUser):
     address = models.CharField(max_length=150)
     phone = models.CharField(max_length=17)
     role = models.CharField(max_length=10, choices=ROLE, default='customer')
 
-    USERNAME_FIELD = 'username'
-    REQUIRED_FIELD = []
-
     def __str__(self):
         return self.username
+
+    def get_full_name(self):
+        return super().get_full_name()

@@ -1,0 +1,9 @@
+{% extends "store/layout.html" %}
+
+{% block title %}
+    <ul>
+        {% for store in stores %}
+            <li>{{store.address}}</li>
+        {% endfor %}
+    </ul>
+{% endblock%}

@@ -12,12 +12,13 @@ class CustomUserCreationForm(UserCreationForm):
         super(CustomUserCreationForm, self).__init__(*args, **kwargs)
         self.fields['password1'].help_text = ''
         self.fields['password2'].help_text = ''
+        self.fields['username'].help_text = ''
 
         
     role = forms.ChoiceField(choices=ROLE, widget=forms.Select)
     class Meta:
         model = Users
-        fields = ['name', 'username', 'email', 'address', 'phone', 'role']
+        fields = ['first_name', 'last_name', 'username', 'email', 'address', 'phone', 'role']
 
     def clean_role(self):
         role = self.cleaned_data.get('role')

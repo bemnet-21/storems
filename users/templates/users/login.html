@@ -2,7 +2,16 @@
 {% block body %}
     <h1>Login</h1>
     <div style="width: 75%; padding: 1em;">
-        <form method="post">
+      {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            {% endfor %}
+      {% endif%}
+      <form method="post">
+            {% csrf_token %}
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">username</label>
               <input type="text" class="form-control" name="username" aria-describedby="emailHelp">
@@ -11,7 +20,7 @@
               <label for="exampleInputPassword1" class="form-label">Password</label>
               <input type="password" class="form-control" name="password">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
+            <button type="submit" class="btn btn-primary">Login</button>
+      </form>
     </div>
 {% endblock %}
