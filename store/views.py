@@ -12,17 +12,22 @@ def index(request):
         return redirect('store:employee_page')
     else:
         return redirect('store:admin_page')
-
+    
+@login_required
 def customer_page(request):
     stores = Stores.objects.all()
     return render(request, "store/customer_page.html", {
         "stores": stores
     })
+
+@login_required
 def employee_page(request):
     stores = Stores.objects.all()
     return render(request, "store/customer_page.html", {
         "stores": stores
     })
+
+@login_required
 def admin_page(request):
     stores = Stores.objects.all()
     return render(request, "store/admin_page.html", {

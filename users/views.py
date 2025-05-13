@@ -19,12 +19,6 @@ def login_users(request):
 
 def register(request):
     if request.method == "POST":
-        # username = request.POST["username"]
-        # # name = request.POST["name"]
-        # email = request.POST["email"]
-        # address = request.POST["address"]
-        # phone = request.POST["phone"]
-        # role = request.POST["role"]
         form = CustomUserCreationForm(request.POST)
 
         if form.is_valid():
@@ -39,3 +33,7 @@ def register(request):
             "form": CustomUserCreationForm()
         })
         
+
+def user_logout(request):
+    logout(request)
+    return redirect('users:login')
